@@ -12,6 +12,7 @@ function HomeScreen(){
     });
     const [inputNewItem, setInputNewItem] = useState("");
     const [openItemAddedToast, setOpenItemAddedToast] = useState(false);
+    const [openItemDeletedToast, setOpenItemDeletedToast] = useState(false);
 
     useEffect(()=>{
 
@@ -50,12 +51,13 @@ function HomeScreen(){
                 <input type='text' value={inputNewItem} onChange={inputHandler} placeholder='Add item' />
                 <button onClick={clickHandler}>Add Item</button>
                 <Toast open = {openItemAddedToast} setOpen={setOpenItemAddedToast} message = {"Item added to list"}/>
+                <Toast setOpen = {setOpenItemDeletedToast} open={openItemDeletedToast} message = {"Item deleted"} />
             </div>
             <div id='item-card-container'>
                 {
                     itemsToBuy.map((elem,index) => {
 
-                        return <GroceryCard isPurchased = {elem.purchased} key={index} id = {index} itemName = {elem.name} setItemsToBuy = {setItemsToBuy}  setOpen={setOpenItemAddedToast} />
+                        return <GroceryCard isPurchased = {elem.purchased} key={index} id = {index} itemName = {elem.name} setItemsToBuy = {setItemsToBuy} setOpen = {setOpenItemDeletedToast} open={openItemDeletedToast} />
 
                     })
                 }

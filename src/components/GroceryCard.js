@@ -2,7 +2,9 @@ import { useState } from 'react';
 import './GroceryCard.css'
 import Toast from '../components/Toast';
 
-function GroceryCard({isPurchased , id , itemName , setItemsToBuy , setOpen}){
+function GroceryCard({isPurchased , id , itemName , setItemsToBuy, setOpen, open }){
+
+
 
     function checkBoxHandler(){
         setItemsToBuy((prevState) => {
@@ -31,7 +33,6 @@ function GroceryCard({isPurchased , id , itemName , setItemsToBuy , setOpen}){
                     textDecoration : isPurchased ? "line-through" : "none"
                 }}>{itemName.toUpperCase()}</p>
             </div>
-            <Toast setOpen = {setOpen} message = {"Item deleted"} />
             <button onClick={deleteHandler} className='delete-btn' >Delete</button>
             
         </div>
